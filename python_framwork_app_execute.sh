@@ -13,12 +13,12 @@ echo $mss_con_app
 echo $serviceName
 echo $imageName
 #kubectl create ns python-app-prod
-kubectl -n ibm-ucd get deploy ${mss_pod_app} > /dev/null
+kubectl -n python-ns get deploy ${mss_pod_app} > /dev/null
 
 if [[ $? -ne 0 ]]; then
     echo "mss pod Dployment ${mss_pod_app} doesn't exist,Appying kubectl commands"
-    kubectl -n ibm-ucd apply -f framwork-deployment.yml
+    kubectl -n python-ns apply -f framwork-deployment.yml
 else
 echo "Deploying latest version while older version is up and running"
- kubectl -n ibm-ucd apply -f framwork-deployment.yml
+ kubectl -n python-ns apply -f framwork-deployment.yml
 fi
